@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:fii/RealtimeShot/RealTImeDetail/real_time_shot_detail.dart';
+import 'package:english_words/english_words.dart';
 
 class ItemModel {
   const ItemModel({this.title, this.route});
@@ -10,6 +11,14 @@ class ItemModel {
 
 class RealTimeShotScreen extends StatelessWidget {
   final List<ItemModel> _items = [];
+final wordPair = WordPair.random();
+  static String horseUrl = 'https://i.stack.imgur.com/Dw6f7.png';
+  static String cowUrl = 'https://i.stack.imgur.com/XPOr3.png';
+  static String camelUrl = 'https://i.stack.imgur.com/YN0m7.png';
+  static String sheepUrl = 'https://i.stack.imgur.com/wKzo8.png';
+  static String goatUrl = 'https://i.stack.imgur.com/Qt4JP.png';
+
+  final List<String> imageAry = [horseUrl, cowUrl, camelUrl, sheepUrl, goatUrl];
 
   _getItems() {
     _items.clear();
@@ -35,18 +44,18 @@ class RealTimeShotScreen extends StatelessWidget {
 
 /*静态固定树木的listView*/
   Widget buildListV() {
-    return ListView(children: List.generate(120, generator));
+    return ListView(children: List.generate(20, generator));
   }
 
 /*动态增长的listview*/
   Widget buildList2V() {
     return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(0.0),
         itemCount: 15,
         itemBuilder: (context, index) {
-          if (index.isOdd) {
-            return Divider(); /*添加listView分割线*/
-          }
+//          if (index.isOdd) {
+//            return Divider(); /*添加listView分割线*/
+//          }
           return generator2(context: context, index: index);
         });
   }
@@ -57,12 +66,38 @@ class RealTimeShotScreen extends StatelessWidget {
 
   Widget generator2({BuildContext context, int index}) {
 //    final bool alreadySaved = _saved.contains(pair);
-    return new ListTile(
-      title: Text(
-        "你好啊-----$index",
-        textAlign: TextAlign.center,
-      ),
-      onTap: () => onPressend(context: context, index: index),
+
+    int index = Random().nextInt(5);
+    var imageUrl = imageAry[index];
+
+    return Container(
+      color: Colors.green,
+
+      height: 81.0,
+
+      child: (Column(
+        children: <Widget>[
+          Container(
+            color: Colors.white,
+            height: 80,
+            child: ListTile(
+              title: Text(
+                "$wordPair.asPascalCase--$index",
+                textAlign: TextAlign.center,
+              ),
+              onTap: () => onPressend(context: context, index: index),
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(imageUrl),
+              ),
+            ),
+          ),
+          Divider(
+            height: 1.0,
+            indent: 0.0,
+            color: Colors.red,
+          )
+        ],
+      )),
     );
   }
 
@@ -116,7 +151,9 @@ class RealTimeShotScreen extends StatelessWidget {
     return Container(
       width: size.width,
       height: size.height,
-      color: getcolor(),
+//      color: getcolor(),
+      color: Colors.white,
+
       child: Text(
         "abcde你好啊----$count",
         textAlign: TextAlign.center,

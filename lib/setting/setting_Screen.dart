@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_section_table_view/flutter_section_table_view.dart'
     show SectionTableController, SectionTableView;
 import 'package:english_words/english_words.dart';
+import 'helps_screen.dart';
 
 abstract class settingModel {} /*抽象类*/
 
@@ -35,7 +36,6 @@ class settingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: Text(
           "Setting",
           style: TextStyle(color: Colors.black),
@@ -73,15 +73,15 @@ class settingScreen extends StatelessWidget {
                 return _generatorProfileHeaderWidget(context);
                 break;
               case 1:
-                return cellCustomView(section: section, row: row);
+                return cellCustomView(context: context,section: section, row: row);
 
                 break;
               case 2:
-                return cellCustomView(section: section, row: row);
+                return cellCustomView(context: context,section: section, row: row);
 
                 break;
               case 3:
-                return cellCustomView(section: section, row: row);
+                return cellCustomView(context: context,section: section, row: row);
 
                 break;
               case 4:
@@ -185,7 +185,8 @@ class settingScreen extends StatelessWidget {
     );
   }
 
-  Widget cellCustomView({int section, int row}) {
+  /**/
+  Widget cellCustomView({BuildContext context,int section, int row}) {
     print('section = $section' + 'row = $row');
     final List<SettingData> listAry = datas[section.toString()];
     final model = listAry[row];
@@ -193,6 +194,9 @@ class settingScreen extends StatelessWidget {
     return ListTile(
       onTap: () {
         print("点击 $section ---$row");
+
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> HelpsScreenVc()));
+
       },
       leading: Container(
         width: 30.0,
@@ -208,3 +212,5 @@ class settingScreen extends StatelessWidget {
     );
   }
 }
+
+
