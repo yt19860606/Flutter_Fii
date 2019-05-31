@@ -1,67 +1,6 @@
-//import 'package:flutter/material.dart';
-//
-//class MeControlerView extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return new MaterialApp(
-//      home: new Scaffold(
-//        appBar: new AppBar(
-//          title: new Text('Tabs Demo'),
-//        ),
-//        body: new DefaultTabController(
-//          length: 3,
-//          child: new Column(
-//            children: <Widget>[
-//              new Container(
-//                constraints: BoxConstraints(maxHeight: 150.0),
-//                child: new Material(
-//                  color: Colors.indigo,
-//                  child: new TabBar(
-//                    tabs: [
-//                      new Tab(icon: new Icon(Icons.directions_car)),
-//                      new Tab(icon: new Icon(Icons.directions_transit)),
-//                      new Tab(icon: new Icon(Icons.directions_bike)),
-//                    ],
-//                  ),
-//                ),
-//              ),
-//              new Expanded(
-//                child: new TabBarView(
-//                  children: [
-//                    new Icon(Icons.directions_car),
-//                    new Icon(Icons.directions_transit),
-//                    new Icon(Icons.directions_bike),
-//                  ],
-//                ),
-//              ),
-//            ],
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-//}
-//
-//
-//class ColoredTabBar extends Container implements PreferredSizeWidget {
-//  ColoredTabBar(this.color, this.tabBar);
-//
-//  final Color color;
-//  final TabBar tabBar;
-//
-//  @override
-//  Size get preferredSize => tabBar.preferredSize;
-//
-//  @override
-//  Widget build(BuildContext context) => Container(
-//    color: color,
-//    child: tabBar,
-//  );
-//}
-
 
 import 'package:flutter/material.dart';
-import 'dart:math';
+
 class Choice {
   const Choice({this.title, this.icon});
   final String title;
@@ -70,10 +9,10 @@ class Choice {
 const List<Choice> choises = <Choice>[
   Choice(title: "自驾", icon: Icons.directions_car),
   Choice(title: "自行车", icon: Icons.directions_bike),
-  Choice(title: "乘船", icon: Icons.directions_boat)
-//Choice(title: "公交车",icon: Icons.directions_bus),
-//Choice(title: "火车",icon: Icons.directions_railway),
-//  Choice(title: "步行",icon: Icons.directions_walk)
+  Choice(title: "乘船", icon: Icons.directions_boat),
+Choice(title: "公交车",icon: Icons.directions_bus),
+Choice(title: "火车",icon: Icons.directions_railway),
+  Choice(title: "步行",icon: Icons.directions_walk),
 ];
 class MeControlerView extends StatelessWidget {
   @override
@@ -92,6 +31,9 @@ class MeControlerView extends StatelessWidget {
                 child: AppBar(
                   backgroundColor: Colors.white,
                   bottom: TabBar(
+
+                    isScrollable: true,
+
                     /*设置选中背景的颜色*/
                       indicator: new BoxDecoration(
                         /*方法一*/
