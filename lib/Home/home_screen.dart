@@ -7,8 +7,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Color appBarBg = Color.fromARGB(255, 25, 164, 178);
   final Color deliverBg = Color.fromARGB(255, 11, 97, 109);
+  final Color appBarBg = Color.fromARGB(255, 25, 164, 178);
 
 //  final String amazonLogo =
 
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBar(title: Text("首页"),),
       body: Column(
         children: <Widget>[
           buildSearchBar(size),
@@ -68,23 +68,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildAppBar() {
-    return AppBar(
-      leading: Icon(Icons.menu),
-      elevation: 0.0,
-      title: Align(
-        child: Image.asset(
-          "assets/images/amazon_logo_beacon.png",
-          color: Colors.white,
-          height: 30,
-        ),
-        alignment: Alignment.centerLeft,
-      ),
-      actions: <Widget>[
-        Icon(Icons.notifications_none),
-        Icon(Icons.shopping_cart),
-      ],
-      backgroundColor: appBarBg,
-    );
-  }
 }

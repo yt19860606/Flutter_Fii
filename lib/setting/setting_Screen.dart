@@ -5,6 +5,7 @@ import 'package:flutter_section_table_view/flutter_section_table_view.dart'
     show SectionTableController, SectionTableView;
 import 'package:english_words/english_words.dart';
 import 'helps_screen.dart';
+import 'about_Screen.dart';
 
 abstract class settingModel {} /*抽象类*/
 
@@ -195,7 +196,50 @@ class settingScreen extends StatelessWidget {
       onTap: () {
         print("点击 $section ---$row");
 
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> HelpsScreenVc()));
+        switch (section)
+        {
+          case 0:{
+
+          }
+          break;
+
+          case 1:{
+
+          }
+          break;
+          case 2:{
+
+          }
+          break;
+          case 3:{
+
+            switch (row){
+              case 0:{
+
+              }break;
+
+              case 1:{
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> HelpsScreenVc()));
+              }break;
+
+              case 2:{
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> AboutScreenView ()));
+
+              }break;
+
+
+
+            }
+
+          }
+          break;
+          case 4:{
+
+          }
+          break;
+
+        }
+
 
       },
       leading: Container(

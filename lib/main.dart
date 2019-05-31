@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fii/bottom_nav_widget.dart';
+import 'package:fii/setting/login_Screen.dart';
 
 import 'setting/setting_Screen.dart';
 
@@ -10,19 +11,47 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false, // 去除debug旗标
-      initialRoute: '/',
-      routes: {
-        '/': (context) {return BottomNavWidget();},
-      },
-
+//      initialRoute: '/',
+//      routes: {
+//        '/': (context) {return BottomNavWidget();},
+//      },
 
 //        home: Scaffold(
 //        body: BottomNavWidget(),
 //      ),
 
+      home: LoginPage(title: 'Flutter Login'),
+
       theme: ThemeData(
         highlightColor: Colors.grey,
+        primarySwatch: Colors.deepOrange, /*统一设置的导航栏主题颜色*/
       ),
     ),
   );
 }
+
+//void main() => runApp(MyApp());
+//
+//class MyApp extends StatelessWidget {
+//  // This widget is the root of your application.
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//      debugShowCheckedModeBanner: false,
+//      title: 'Flutter Demo',
+//      theme: ThemeData(
+//        // This is the theme of your application.
+//        //
+//        // Try running your application with "flutter run". You'll see the
+//        // application has a blue toolbar. Then, without quitting the app, try
+//        // changing the primarySwatch below to Colors.green and then invoke
+//        // "hot reload" (press "r" in the console where you ran "flutter run",
+//        // or simply save your changes to "hot reload" in a Flutter IDE).
+//        // Notice that the counter didn't reset back to zero; the application
+//        // is not restarted.
+//        primarySwatch: Colors.blue,
+//      ),
+//      home: LoginPage(title: 'Flutter Login'),
+//    );
+//  }
+//}
