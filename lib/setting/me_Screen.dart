@@ -1,13 +1,72 @@
+//import 'package:flutter/material.dart';
+//
+//class MeControlerView extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return new MaterialApp(
+//      home: new Scaffold(
+//        appBar: new AppBar(
+//          title: new Text('Tabs Demo'),
+//        ),
+//        body: new DefaultTabController(
+//          length: 3,
+//          child: new Column(
+//            children: <Widget>[
+//              new Container(
+//                constraints: BoxConstraints(maxHeight: 150.0),
+//                child: new Material(
+//                  color: Colors.indigo,
+//                  child: new TabBar(
+//                    tabs: [
+//                      new Tab(icon: new Icon(Icons.directions_car)),
+//                      new Tab(icon: new Icon(Icons.directions_transit)),
+//                      new Tab(icon: new Icon(Icons.directions_bike)),
+//                    ],
+//                  ),
+//                ),
+//              ),
+//              new Expanded(
+//                child: new TabBarView(
+//                  children: [
+//                    new Icon(Icons.directions_car),
+//                    new Icon(Icons.directions_transit),
+//                    new Icon(Icons.directions_bike),
+//                  ],
+//                ),
+//              ),
+//            ],
+//          ),
+//        ),
+//      ),
+//    );
+//  }
+//}
+//
+//
+//class ColoredTabBar extends Container implements PreferredSizeWidget {
+//  ColoredTabBar(this.color, this.tabBar);
+//
+//  final Color color;
+//  final TabBar tabBar;
+//
+//  @override
+//  Size get preferredSize => tabBar.preferredSize;
+//
+//  @override
+//  Widget build(BuildContext context) => Container(
+//    color: color,
+//    child: tabBar,
+//  );
+//}
+
+
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:fii/DeviceList/DeviceDetail/device_Detail_Screen.dart';
-
 class Choice {
   const Choice({this.title, this.icon});
   final String title;
   final IconData icon;
 }
-
 const List<Choice> choises = <Choice>[
   Choice(title: "自驾", icon: Icons.directions_car),
   Choice(title: "自行车", icon: Icons.directions_bike),
@@ -16,11 +75,9 @@ const List<Choice> choises = <Choice>[
 //Choice(title: "火车",icon: Icons.directions_railway),
 //  Choice(title: "步行",icon: Icons.directions_walk)
 ];
-
-class DeviceListViewScreen extends StatelessWidget {
+class MeControlerView extends StatelessWidget {
   @override
   final Color selectBackColor = Colors.amber;
-
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -35,8 +92,7 @@ class DeviceListViewScreen extends StatelessWidget {
                 child: AppBar(
                   backgroundColor: Colors.white,
                   bottom: TabBar(
-
-                      /*设置选中背景的颜色*/
+                    /*设置选中背景的颜色*/
                       indicator: new BoxDecoration(
                         /*方法一*/
                         gradient: LinearGradient(
@@ -65,88 +121,23 @@ class DeviceListViewScreen extends StatelessWidget {
                 preferredSize: Size.fromHeight(48)),
             body: TabBarView(
                 children: choises.map((Choice choise) {
-              return Padding(
-                padding: EdgeInsets.all(16),
-
-    child: ChoiseDetail(choice: choise,)
+                  return Padding(
+                      padding: EdgeInsets.all(16),
+                      child: ChoiseDetail(choice: choise,)
 //                child: buildGridV3(),
-              );
-            }).toList()),
+                  );
+                }).toList()),
           )),
     );
-  }
-
-  /*动态增长的Gridview*/
-  Widget buildGridV() {
-    return GridView.count(
-      crossAxisCount: 2,
-      childAspectRatio: 2 / 3,
-      /*宽高比*/
-      children: List.generate(150, (idx) {
-        return Card(
-          child: Text("Index $idx"),
-          color: getcolor(),
-        );
-      }),
-    );
-  }
-
-  /*动态增长的Gridview*/
-  Widget buildGridV2() {
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1,
-        ),
-        itemBuilder: ((context, idx) {
-          return Card(
-            child: Text(
-              "Index $idx",
-              textAlign: TextAlign.center,
-            ),
-            color: getcolor(),
-//            onPressed: (){
-//              collectViewPressent(context);
-//            },
-          );
-        }));
-  }
-
-  void collectViewPressent(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DeviceDetailScreen()));
-  }
-
-  /*动态增长的Gridview*/
-  Widget buildGridV3() {
-    return GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 150),
-        itemBuilder: ((context, index) {
-          return RaisedButton(
-            child: Text("Index $index"),
-            color: getcolor(),
-            onPressed: () {
-              collectViewPressent(context);
-            },
-          );
-        }));
-  }
-
-  Color getcolor() {
-    return Color.fromARGB(255, Random().nextInt(255), Random().nextInt(255),
-        Random().nextInt(255));
   }
 }
 
 class ChoiseDetail extends StatelessWidget {
   const ChoiseDetail({Key key, this.choice}) : super(key: key);
   final Choice choice;
-
   @override
   Widget build(BuildContext context) {
     final TextStyle textStyle = Theme.of(context).textTheme.display1;
-
     return Card(
       color: Colors.white,
       child: Center(

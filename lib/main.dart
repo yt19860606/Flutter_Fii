@@ -11,20 +11,21 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false, // 去除debug旗标
-//      initialRoute: '/',
-//      routes: {
-//        '/': (context) {return BottomNavWidget();},
-//      },
+      initialRoute: '/',
+      routes: {
+        '/': (context) {return BottomNavWidget();},
+      },
 
 //        home: Scaffold(
 //        body: BottomNavWidget(),
 //      ),
 
-      home: LoginPage(title: 'Flutter Login'),
+
+//      home: LoginPage(title: 'Flutter Login'),
 
       theme: ThemeData(
         highlightColor: Colors.grey,
-        primarySwatch: Colors.deepOrange, /*统一设置的导航栏主题颜色*/
+        primarySwatch: Colors.deepPurple, /*统一设置的导航栏主题颜色*/
       ),
     ),
   );

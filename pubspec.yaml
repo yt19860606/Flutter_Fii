@@ -54,6 +54,7 @@ flutter:
      - assets/images/user_setting.png
      - assets/images/user_about.png
      - assets/images/list_in.png
+     - assets/images/virtual_titleBack.png
 
   #    - images/a_dot_burr.jpeg
 #    - images/a_dot_ham.jpeg

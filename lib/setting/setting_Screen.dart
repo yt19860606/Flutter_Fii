@@ -6,6 +6,8 @@ import 'package:flutter_section_table_view/flutter_section_table_view.dart'
 import 'package:english_words/english_words.dart';
 import 'helps_screen.dart';
 import 'about_Screen.dart';
+import 'me_Screen.dart';
+
 
 abstract class settingModel {} /*抽象类*/
 
@@ -38,9 +40,11 @@ class settingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Setting",
+          "我的",
           style: TextStyle(color: Colors.black),
+
         ),
+        backgroundColor: Colors.white,
       ),
       body: SafeArea(
         child: SectionTableView(
@@ -159,6 +163,7 @@ class settingScreen extends StatelessWidget {
               style: new TextStyle(
                 fontSize: 16.0,
                 fontFamily: 'serif',
+                color: Colors.white
               ),
             ),
           ),
@@ -171,6 +176,7 @@ class settingScreen extends StatelessWidget {
               style: new TextStyle(
                 fontSize: 14.0,
                 fontFamily: 'serif',
+                  color: Colors.white
               ),
             ),
           ),
@@ -204,6 +210,9 @@ class settingScreen extends StatelessWidget {
           break;
 
           case 1:{
+
+
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> MeControlerView()));
 
           }
           break;
@@ -253,6 +262,26 @@ class settingScreen extends StatelessWidget {
 //        child: Icon(Icons.arrow_forward_ios,color: Colors.grey,),
         child: Image.asset("assets/images/list_in.png"),
       ),
+    );
+  }
+
+  Widget buildAppBar() {
+    return AppBar(
+      leading: Icon(Icons.menu),
+      elevation: 0.0,
+      title: Align(
+        child: Image.asset(
+          "assets/images/amazon_logo_beacon.png",
+          color: Colors.white,
+          height: 30,
+        ),
+        alignment: Alignment.centerLeft,
+      ),
+      actions: <Widget>[
+        Icon(Icons.notifications_none),
+        Icon(Icons.shopping_cart),
+      ],
+      backgroundColor: Colors.white,
     );
   }
 }
