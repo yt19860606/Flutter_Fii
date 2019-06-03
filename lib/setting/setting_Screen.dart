@@ -8,6 +8,8 @@ import 'helps_screen.dart';
 import 'about_Screen.dart';
 import 'me_Screen.dart';
 
+//import 'package:fii/Common/component_index.dart';
+import 'package:fii/Common/component_index.dart';
 
 abstract class settingModel {} /*抽象类*/
 
@@ -20,12 +22,12 @@ class SettingData extends settingModel {
 class SettingLine extends settingModel {}
 
 final datas = {
-  "1": [SettingData(assetName: "assets/images/user_collect.png", title: "收藏")],
-  "2": [SettingData(assetName: "assets/images/user_setting.png", title: "设置")],
+  "1": [SettingData(assetName: Tools.getImgPath("user_collect"), title: "收藏")],
+  "2": [SettingData(assetName: Tools.getImgPath("user_setting"), title: "设置")],
   "3": [
-    SettingData(assetName: "assets/images/user_service.png", title: "客服"),
-    SettingData(assetName: "assets/images/user_help.png", title: "帮助"),
-    SettingData(assetName: "assets/images/user_about.png", title: "关于")
+    SettingData(assetName: Tools.getImgPath("user_service"), title: "客服"),
+    SettingData(assetName: Tools.getImgPath("user_help"), title: "帮助"),
+    SettingData(assetName: Tools.getImgPath("user_about"), title: "关于")
   ]
 };
 
@@ -141,7 +143,7 @@ class settingScreen extends StatelessWidget {
             top: 0,
             bottom: 0,
             child: Image.asset(
-              'assets/images/user_bg.png',
+              Tools.getImgPath("user_bg"),
               fit: BoxFit.fill,
             ),
           ),
@@ -150,7 +152,7 @@ class settingScreen extends StatelessWidget {
             top: 36,
             bottom: 36,
             child: Image.asset(
-              'assets/images/avatar.png',
+              Tools.getImgPath("avatar"),
               fit: BoxFit.fill,
             ),
           ),
@@ -185,7 +187,7 @@ class settingScreen extends StatelessWidget {
             bottom: 42.0,
             top: 42,
             width: 28,
-            child: Image.asset("assets/images/list_in.png"),
+            child: Image.asset(Tools.getImgPath("list_in")),
           ),
         ]),
       ),
@@ -260,7 +262,7 @@ class settingScreen extends StatelessWidget {
         width: 28.0,
         height: 56,
 //        child: Icon(Icons.arrow_forward_ios,color: Colors.grey,),
-        child: Image.asset("assets/images/list_in.png"),
+        child: Image.asset(Tools.getImgPath("list_in")),
       ),
     );
   }
@@ -271,7 +273,7 @@ class settingScreen extends StatelessWidget {
       elevation: 0.0,
       title: Align(
         child: Image.asset(
-          "assets/images/amazon_logo_beacon.png",
+        Tools.getImgPath("amazon_logo_beacon"),
           color: Colors.white,
           height: 30,
         ),
@@ -285,5 +287,4 @@ class settingScreen extends StatelessWidget {
     );
   }
 }
-
 
