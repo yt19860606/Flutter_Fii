@@ -6,19 +6,40 @@ import 'setting/setting_Screen.dart';
 
 //import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
+
+//void main() => runApp(new MyApp());
+//
+//class MyApp extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+////    final wordPair = new WordPair.random();
+//    return new MaterialApp(
+//      title: 'Flutter Test',
+//      // 修改主题颜色
+//      theme: new ThemeData(
+//        primaryColor: Colors.blue,
+//      ),
+//      home: BottomNavWidget(),
+////      home: new RandomWords(),
+//    );
+//  }
+//}
+
+
+
+
+
 void main() {
 //  debugPaintSizeEnabled = true;      //打开视觉调试开关
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false, // 去除debug旗标
-      initialRoute: '/',
-      routes: {
-        '/': (context) {return BottomNavWidget();},
-      },
+//      initialRoute: '/',
+//      routes: {
+//        '/': (context) {return BottomNavWidget();},
+//      },
 
-//        home: Scaffold(
-//        body: BottomNavWidget(),
-//      ),
+        home: BottomNavWidget(),
 
 
 //      home: LoginPage(title: 'Flutter Login'),
@@ -30,6 +51,10 @@ void main() {
     ),
   );
 }
+
+
+
+
 
 //void main() => runApp(MyApp());
 //
