@@ -7,22 +7,8 @@ import 'package:fii/setting/setting_Screen.dart';
 import 'dart:io';
 import 'package:fii/Draw/drawLeftDetailPage.dart';
 
-//class BottomNavWidget extends StatefulWidget {
-//  @override
-//  State<StatefulWidget> createState() {
-//    return BottomNavWidgetState();
-//  }
-//}
 
-class BottomNavWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-        debugShowCheckedModeBanner: false, home: new BottomNavPageWidget());
-  }
-}
-
-class BottomNavPageWidget extends StatefulWidget {
+class BottomNavWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return new BottomNavWidgetState();
@@ -39,11 +25,9 @@ enum TabItem {
 
 
 
-class BottomNavWidgetState extends State<BottomNavPageWidget> {
-//  static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
+class BottomNavWidgetState extends State<BottomNavWidget> {
 
 static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
-
 
   final bottomNavColor = Colors.indigoAccent;
   int _currentIndex = 0;
