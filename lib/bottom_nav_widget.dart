@@ -7,7 +7,6 @@ import 'package:fii/setting/setting_Screen.dart';
 import 'dart:io';
 import 'package:fii/Draw/drawLeftDetailPage.dart';
 
-
 class BottomNavWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -23,11 +22,8 @@ enum TabItem {
   account_circle,
 }
 
-
-
 class BottomNavWidgetState extends State<BottomNavWidget> {
-
-static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
+  static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
 
   final bottomNavColor = Colors.indigoAccent;
   int _currentIndex = 0;
@@ -49,18 +45,21 @@ static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-
-
     Widget userHeader = UserAccountsDrawerHeader(
       accountName: new Text('Aller_Dong'),
       accountEmail: new Text('Aller_Dong@163.com'),
       currentAccountPicture: new CircleAvatar(
-        backgroundImage: AssetImage('assets/images/amazon_logo_beacon.png'),
+
+        backgroundImage: NetworkImage(
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559793152251&di=85ca8cb42a23f0cb150a32808a396080&imgtype=0&src=http%3A%2F%2Fpic45.nipic.com%2F20140805%2F7447430_145220850000_2.jpg"),
         radius: 35.0,
       ),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: NetworkImage(
+                  "http://img2.ph.126.net/L2YRmNY7w5Pxwzkv1mLYCA==/2662190329746931916.jpg"),
+              fit: BoxFit.cover,colorFilter: ColorFilter.mode(Colors.green[300].withOpacity(0.6), BlendMode.hardLight)),),
     );
-
-
 
     // TODO: implement build
     return Scaffold(
@@ -76,10 +75,20 @@ static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
               leading: Icon(Icons.favorite),
               onTap: () => _onPageOpen(context, "注册登录"),
             ),
+            Divider(
+              height: 1.0,
+              indent: 0.0,
+              color: Colors.grey,
+            ),
             ListTile(
               title: Text("设置"),
               leading: Icon(Icons.settings),
               onTap: () => _onPageOpen(context, "设置"),
+            ),
+            Divider(
+              height: 1.0,
+              indent: 0.0,
+              color: Colors.grey,
             ),
           ],
         ),
@@ -237,7 +246,6 @@ static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
     Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) => DrawerLeftDetailPager(title)));
   }
-
 }
 
 String tabItemName(TabItem tabItem) {

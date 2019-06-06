@@ -17,11 +17,46 @@ const List<Choice> choises = <Choice>[
 //  Choice(title: "步行",icon: Icons.directions_walk)
 ];
 
+final Color selectBackColor = Colors.amber;
+
+
 class DeviceListViewScreen extends StatelessWidget {
   @override
-  final Color selectBackColor = Colors.amber;
+
+
+  TabBar _tabBar = new TabBar(
+
+    /*设置选中背景的颜色*/
+      indicator: new BoxDecoration(
+        /*方法一*/
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 51, 87, 171),
+            Color.fromARGB(255, 212, 22, 62)
+          ],
+        ),
+/*方法二使用图片*/
+//                        image: DecorationImage(
+//                            image:
+//        ExactAssetImage("assets/images/virtual_titleBack.png"),
+//                          fit: BoxFit.cover
+//                      ),
+      ),
+      indicatorColor: selectBackColor,
+      indicatorSize: TabBarIndicatorSize.tab,
+      unselectedLabelColor: Colors.black,
+      labelColor: Colors.white,
+      tabs: choises.map((Choice choise) {
+        return Tab(
+          text: choise.title,
+        );
+      }).toList());
 
   Widget build(BuildContext context) {
+
+
+    print("_tabBar.preferredSize.height = ${_tabBar.preferredSize.height}");
+
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -34,35 +69,14 @@ class DeviceListViewScreen extends StatelessWidget {
             appBar: PreferredSize(
                 child: AppBar(
                   backgroundColor: Colors.white,
-                  bottom: TabBar(
-
-                      /*设置选中背景的颜色*/
-                      indicator: new BoxDecoration(
-                        /*方法一*/
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 51, 87, 171),
-                            Color.fromARGB(255, 212, 22, 62)
-                          ],
-                        ),
-/*方法二使用图片*/
-//                        image: DecorationImage(
-//                            image:
-//        ExactAssetImage("assets/images/virtual_titleBack.png"),
-//                          fit: BoxFit.cover
-//                      ),
-                      ),
-                      indicatorColor: selectBackColor,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      unselectedLabelColor: Colors.black,
-                      labelColor: Colors.white,
-                      tabs: choises.map((Choice choise) {
-                        return Tab(
-                          text: choise.title,
-                        );
-                      }).toList()),
+                  bottom:_tabBar,
                 ),
-                preferredSize: Size.fromHeight(48)),
+//                preferredSize: Size(double.infinity, 44)),
+//                preferredSize: Size.fromHeight(48)),
+
+
+            preferredSize: Size.fromHeight(_tabBar.preferredSize.height)),
+
             body: TabBarView(
                 children: choises.map((Choice choise) {
               return Padding(
