@@ -32,7 +32,7 @@ class DeviceListViewScreen extends StatelessWidget {
 //            Color.fromARGB(255, 212, 22, 62)
 //          ],
 //        ),
-///*方法二使用图片*/
+      ///*方法二使用图片*/
 ////                        image: DecorationImage(
 ////                            image:
 ////        ExactAssetImage("assets/images/virtual_titleBack.png"),
@@ -40,59 +40,80 @@ class DeviceListViewScreen extends StatelessWidget {
 ////                      ),
 //      ),
 
+//      indicator: new ShapeDecoration(
+//          color: Color.fromARGB(255, 0, 197, 147), // 统一四边颜色和宽度
+////      shape: Border.all(color: Color(0xFF00FFFF),style: BorderStyle.solid,width: 5)
+//// 四个边分别指定颜色和宽度， 当只给bottom时与UnderlineInputBorder一致效果
+////          shape: Border(top: b, bottom: b, right: b, left: b)
+//// 底部线
+////          shape: UnderlineInputBorder( borderSide:BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
+//// 矩形边色
+//          shape: RoundedRectangleBorder(
+//              borderRadius: BorderRadius.all(Radius.circular(10)),
+//              side: BorderSide(
+//                  color: Colors.green, style: BorderStyle.solid, width: 5))
+//// 圆形边色
+////        shape: CircleBorder(side: BorderSide(color: Color(0xFFFFFF00), style: BorderStyle.solid, width: 2))
+//// 体育场（竖向椭圆）
+////        shape: StadiumBorder(side: BorderSide(width: 2, style: BorderStyle.solid, color: Color(0xFF00FFFF))
+//// 角形（八边角）边色
+////          shape: BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
+//          ),
 
-      indicator: new ShapeDecoration(
-      color: Colors.green, // 底色
-  // 统一四边颜色和宽度
-//      shape: Border.all(color: Color(0xFF00FFFF),style: BorderStyle.solid,width: 5)
-// 四个边分别指定颜色和宽度， 当只给bottom时与UnderlineInputBorder一致效果
-//          shape: Border(top: b, bottom: b, right: b, left: b)
-// 底部线
-//          shape: UnderlineInputBorder( borderSide:BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
-// 矩形边色
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Colors.green, style: BorderStyle.solid, width: 5))
-// 圆形边色
-//        shape: CircleBorder(side: BorderSide(color: Color(0xFFFFFF00), style: BorderStyle.solid, width: 2))
-// 体育场（竖向椭圆）
-//        shape: StadiumBorder(side: BorderSide(width: 2, style: BorderStyle.solid, color: Color(0xFF00FFFF))
-// 角形（八边角）边色
-//          shape: BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
-  ),
+//      unselectedLabelColor: Colors.grey,
 
+      unselectedLabelStyle: TextStyle(backgroundColor: Colors.grey),
+      indicatorPadding: EdgeInsets.all(10.0),
 
-
-//      indicatorPadding:EdgeInsets.all( 10.0),
+//controller:TabController(length: null, vsync: null),
 
       isScrollable: true,
-      indicatorColor: selectBackColor,
+//      indicatorColor: selectBackColor,
 //      indicatorSize: TabBarIndicatorSize.tab,
-      unselectedLabelColor: Colors.black,
+//      unselectedLabelColor: Colors.black,
 
+      indicator: new BoxDecoration(
+        color: Color.fromARGB(255, 0, 197, 147),
+      ),
 
       labelColor: Colors.white,
       tabs: choises.map((Choice choise) {
-        return
-              Tab(
-                
-                child: Container(
+        return Tab(
+          child: Stack(
 
-                  color: Colors.grey,
-//  padding: EdgeInsets.only(top: 10,bottom: 10),
+
+
+//            color: Color.fromARGB(255, 131, 131, 131),
+//            width: 150,
+//            height: 36,
+//            child: Row(
+//              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+
+                Container(
+                  color: Color.fromARGB(255, 131, 131, 131),
                   width: 150,
                   height: 36,
                   child: Row(
-
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Text(choise.title,),
+                      Text(
+                        choise.title,
+                      ),
                       Icon(Icons.laptop),
+
                     ],
+
                   ),
-                ),
-              );
+
+                )
+
+
+              ],
+            ),
+//          ),
+        );
       }).toList());
-
-
 
   Widget build(BuildContext context) {
     print("_tabBar.preferredSize.height = ${_tabBar.preferredSize.height}");
@@ -100,7 +121,7 @@ class DeviceListViewScreen extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("设备列表"),
+        title: Text("交通工具"),
       ),
 //      body: buildGridV3(),
       body: DefaultTabController(
@@ -108,7 +129,6 @@ class DeviceListViewScreen extends StatelessWidget {
           child: Scaffold(
             appBar: PreferredSize(
                 child: Container(
-
 //  color: Colors.red,
 //height: 40,
 ////  child:Text("测试"),
@@ -119,9 +139,6 @@ class DeviceListViewScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
                     bottom: _tabBar,
                   ),
-
-
-
                 ),
                 preferredSize: Size.fromHeight(48)),
             body: TabBarView(
@@ -227,9 +244,7 @@ class ChoiseDetail extends StatelessWidget {
   }
 }
 
-
 class CustomAppBar extends StatelessWidget {
-
   final String title;
   final double barHeight = 50.0; // change this for different heights
 
@@ -237,10 +252,7 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double statusbarHeight = MediaQuery
-        .of(context)
-        .padding
-        .top;
+    final double statusbarHeight = MediaQuery.of(context).padding.top;
 
     return new Container(
       padding: new EdgeInsets.only(top: statusbarHeight),
